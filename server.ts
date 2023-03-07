@@ -67,7 +67,7 @@
 
  import express from "express";
  import path from "path";
- import { Server, Socket } from "socket.io";
+ import { Server } from "socket.io";
  import fetch from "node-fetch";
 
  const PORT = process.env.PORT || 3001;
