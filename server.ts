@@ -69,6 +69,10 @@
  import path from "path";
  import { Server } from "socket.io";
  import fetch from "node-fetch";
+ import { config as env } from 'dotenv'
+
+ const WEBHOOK_ID = process.env.WEBHOOK_ID as string;
+ const AUTH_TOKEN = process.env.AUTH_TOKEN as string;
 
  const PORT = process.env.PORT || 3001;
  const __dirname = path.resolve();
@@ -99,13 +103,13 @@ function notificationReceived(req : any) {
 
 async function addAddress(new_address : string) {
   console.log("adding address " + new_address);
-  const body = { webhook_id: "wh_lwfxzlz75p1kw0v2", addresses_to_add: [new_address], addresses_to_remove: [] };
+  const body = { webhook_id: WEBHOOK_ID, addresses_to_add: [new_address], addresses_to_remove: [] };
   try {
     fetch('https://dashboard.alchemyapi.io/api/update-webhook-addresses', {
       method: 'PATCH',
       body: JSON.stringify(body),
       headers: {'Content-Type': 'application/json' , 
-                'X-Alchemy-Token': "YijtXcZlhNuK7LTQuVUtFY4nUtAIJUq0"}
+                'X-Alchemy-Token': AUTH_TOKEN}
     })
       .then(res => res.json())
       .then(json => console.log("Successfully added address:", (body)))
