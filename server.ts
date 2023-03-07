@@ -99,9 +99,9 @@ function notificationReceived(req : any) {
 
 async function addAddress(new_address : string) {
   console.log("adding address " + new_address);
-  const body = { webhook_id: "wh_rkahynds5zhf6vqt", addresses_to_add: [new_address], addresses_to_remove: [] };
+  const body = { webhook_id: "wh_m90qo14sp6e0wgtl", addresses_to_add: [new_address], addresses_to_remove: [] };
   try {
-    fetch('https://dashboard.alchemyapi.io/api/update-webhook-addresses', {
+    fetch('https://polygon-mumbai.g.alchemy.com/v2/Fgf4x-uKrbj5Jtl2LQMLOUNkiif5mOzj', {
       method: 'PATCH',
       body: JSON.stringify(body),
       headers: {'Content-Type': 'application/json' , 
