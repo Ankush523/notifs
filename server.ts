@@ -19,7 +19,7 @@
 // app.use(express.static(path.join(__dirname, 'public')))
 // app.use(express.json());
 
-// app.post("/CandidateDetails", (req: Request, res: Response) => {
+// app.post("/alchemyhook", (req: Request, res: Response) => {
 //   console.log("Transaction notification received:", JSON.stringify(req.body));
 //   io.emit("notification", JSON.stringify(req.body));
 //   res.status(200).end();
@@ -79,7 +79,7 @@
  const app = express()
   .use(express.static(path.join(__dirname, 'public')))
   .use(express.json())
-  .post('/alchemyhook',(req, res) => { notificationReceived(req); res.status(200).end() })
+  .post('https://notifs-seven.vercel.app/alchemyhook',(req, res) => { notificationReceived(req); res.status(200).end() })
   .get('/*', (req, res) => res.sendFile(path.join(__dirname + '/index.html')))
   .listen(PORT, () => console.log(`Listening on ${PORT}`))
 
