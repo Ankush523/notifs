@@ -1,9 +1,7 @@
 <!DOCTYPE html>
   <html>
     <head>
-    </head>
-    <body>
-      <script src="/socket.io/socket.io.ts"></script>
+      <script src="https://cdn.socket.io/4.1.2/socket.io.min.js"></script>
       <script src="web3.js"></script>
       <script>
         // connect to WebSocket server and start listening for notifications
@@ -15,6 +13,8 @@
           el.innerHTML = 'Look what just happened!: ' + notificationBody;
         });
       </script>
+    </head>
+    <body>
 
       <button class="enableEthereumButton">Enable Ethereum</button>
       <h2>Account: <span class="showAccount"></span></h2>
@@ -33,7 +33,6 @@
           if (showAccount.innerHTML) {
             socket.emit('register address', showAccount.innerHTML);
           }
-          console.log(socket)
           alert(showAccount.innerHTML+" added to notifications.")
           console.log(socket)
         });

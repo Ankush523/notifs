@@ -79,7 +79,7 @@
  const app = express()
   .use(express.static(path.join(__dirname, 'public')))
   .use(express.json())
-  .post('https://notifs-seven.vercel.app/alchemyhook',(req, res) => { notificationReceived(req); res.status(200).end() })
+  .post('/alchemyhook',(req, res) => { notificationReceived(req); res.status(200).end() })
   .get('/*', (req, res) => res.sendFile(path.join(__dirname + '/index.html')))
   .listen(PORT, () => console.log(`Listening on ${PORT}`))
 
