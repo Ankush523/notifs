@@ -106,14 +106,14 @@ async function addAddress(new_address : string) {
   console.log("adding address " + new_address);
   const body = { webhook_id: WEBHOOK_ID, addresses_to_add: [new_address], addresses_to_remove: [] };
   try {
-    fetch('https://polygon-mumbai.g.alchemy.com/v2/Fgf4x-uKrbj5Jtl2LQMLOUNkiif5mOzj', {
+    const response = await fetch('https://polygon-mumbai.g.alchemy.com/v2/Fgf4x-uKrbj5Jtl2LQMLOUNkiif5mOzj', {
       method: 'PATCH',
       body: JSON.stringify(body),
       headers: {'Content-Type': 'application/json' , 
                 'X-Alchemy-Token': AUTH_TOKEN}
     })
-      .then(json => console.log("Successfully added address:", json))
-      .catch(err => console.log("Error! Unable to add address:", err));
+    const result = await response.json();
+    console.log("Address registration successful:", result);
   }
   catch (err) {
     console.error(err);
