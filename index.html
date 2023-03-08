@@ -5,7 +5,7 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.1/socket.io.js"></script>
       <script>
         // connect to WebSocket server and start listening for notifications
-        const socket = io("http://localhost:3001");
+        const socket = io();
         let el;
         socket.on('notification', (notificationBody) => {
           console.log("got notification");
