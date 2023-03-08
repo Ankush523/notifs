@@ -12,7 +12,7 @@
           console.log("got notification");
           console.log(notificationBody)
           el = document.getElementById('server-notification');
-          el.innerHTML = 'Look what just happened!: ' + notificationBody;
+          el.innerHTML = 'Look what just happened!: ' + JSON.parse(notificationBody);
         });
       </script>
     </head>
