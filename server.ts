@@ -74,6 +74,7 @@
 
  const WEBHOOK_ID = process.env.WEBHOOK_ID as string;
  const AUTH_TOKEN = process.env.AUTH_TOKEN as string;
+ const WEB_URL = process.env.WEB_URL as string;
 
  const PORT = process.env.PORT || 3001;
  const __dirname = path.resolve();
@@ -106,7 +107,7 @@ async function addAddress(new_address : string) {
   console.log("adding address " + new_address);
   const body = { webhook_id: WEBHOOK_ID, addresses_to_add: [new_address], addresses_to_remove: [] };
   try {
-    const response = await fetch('https://polygon-mumbai.g.alchemy.com/v2/Fgf4x-uKrbj5Jtl2LQMLOUNkiif5mOzj', {
+    const response = await fetch(WEB_URL, {
       method: 'PATCH',
       body: JSON.stringify(body),
       headers: {'Content-Type': 'application/json' , 
