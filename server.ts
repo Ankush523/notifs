@@ -14,14 +14,14 @@
 //   console.log(`Server started on port ${port}`);
 // });
 
-// const alchemyWebhookURL = "https://dashboard.alchemyapi.io/api/webhook/wh_zlo1b25whi7n0b4e";
+// const alchemyWebhookURL = "https://notifs-seven.vercel.app/alchemyhook";
 
 // app.use(express.static(path.join(__dirname, 'public')))
 // app.use(express.json());
 
 // app.post("/alchemyhook", (req: Request, res: Response) => {
-//   console.log("Transaction notification received:", JSON.stringify(req.body));
-//   io.emit("notification", JSON.stringify(req.body));
+//   console.log("Transaction notification received:", req.body);
+//   io.emit("notification", req.body);
 //   res.status(200).end();
 // });
 
@@ -37,7 +37,7 @@
 //   socket.on("register address", async (address: string) => {
 //     console.log("Registering new address:", address);
 //     let body = {
-//       webhook_id: "wh_zlo1b25whi7n0b4e",
+//       webhook_id: "wh_h4a583i5bcjzx04d",
 //       addresses_to_add: [address],
 //       addresses_to_remove: []
 //     };
@@ -50,8 +50,9 @@
 //           "X-Alchemy-Token": "YijtXcZlhNuK7LTQuVUtFY4nUtAIJUq0",
 //         },
 //       });
+     
 //       const result = await response.json();
-//       console.log("Address registration successful:", result);
+//        console.log("Address registration successful:", result);
 //     } 
 //     catch (error) {
 //       console.error("Address registration failed:", error);
@@ -105,14 +106,13 @@ async function addAddress(new_address : string) {
   console.log("adding address " + new_address);
   const body = { webhook_id: WEBHOOK_ID, addresses_to_add: [new_address], addresses_to_remove: [] };
   try {
-    fetch('https://notifs-seven.vercel.app/alchemyhook', {
+    fetch('https://polygon-mumbai.g.alchemy.com/v2/Fgf4x-uKrbj5Jtl2LQMLOUNkiif5mOzj', {
       method: 'PATCH',
       body: JSON.stringify(body),
       headers: {'Content-Type': 'application/json' , 
                 'X-Alchemy-Token': AUTH_TOKEN}
     })
-      .then(res => res.json())
-      .then(json => console.log("Successfully added address:", (body)))
+      .then(json => console.log("Successfully added address:", json))
       .catch(err => console.log("Error! Unable to add address:", err));
   }
   catch (err) {
