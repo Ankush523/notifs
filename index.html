@@ -10,6 +10,7 @@
         let el;
         socket.on('notification', (notificationBody) => {
           console.log("got notification");
+          console.log(notificationBody)
           el = document.getElementById('server-notification');
           el.innerHTML = 'Look what just happened!: ' + notificationBody;
         });
