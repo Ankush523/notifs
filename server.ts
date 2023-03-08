@@ -99,7 +99,7 @@
 
 function notificationReceived(req : any) {
   console.log("notification received!");
-  io.emit('notification', req.body);
+  io.emit('notification', JSON.stringify(req.body));
 }
 
 async function addAddress(new_address : string) {

@@ -6,7 +6,7 @@
       <script>
         // connect to WebSocket server and start listening for notifications
         
-        const socket = io();
+        let socket = io();
         let el;
         socket.on('notification', (notificationBody) => {
           console.log("got notification");
